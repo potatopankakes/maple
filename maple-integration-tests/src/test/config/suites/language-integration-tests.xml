@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="Language" verbose="1" >
+	<parameter name="baseUrl" value="http://localhost:8080/maple"/>
+<!--
+-->
+	<listeners>
+		<listener class-name="com.gnoras.maple.itest.impl.MapleWebTestNGListener"/>
+	</listeners>
+	<test name="languageList" >
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LanguageServiceTest" >
+				<methods>
+					<include name="testList" />
+				</methods>
+			</class>
+		</classes>
+	</test> 
+</suite>

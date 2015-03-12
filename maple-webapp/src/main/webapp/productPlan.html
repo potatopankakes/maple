@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>Maple Product Plan Page</title>
+	<meta name="description" content="Maple Product Plan Page"/>
+	<meta name="keywords" content="maple, product, product plan"/>
+	<link rel="stylesheet" type="text/css" href="css/maple.css"/>
+	<link rel="stylesheet" type="text/css" href="css/productPlan.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.9.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.pnotify-1.0.1.default.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jjquery.pnotify-1.0.1.default.icons.css"/>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.pnotify-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/maple.util.js"></script>
+	<script type="text/javascript" src="js/productPlan.js"></script>
+</head>
+<body>
+	<h1>Maple Product Plan Page</h1>
+	<div class="fields clear-fix">
+		<div class="product-box">
+			<div class="clear-fix">
+				<label for="idMaxChildren">Enter maximum number of children</label>
+				<input id="idMaxChildren" type="text" size="2" maxlength="2" value="5"/>
+			</div>
+			<div class="clear-fix">
+				<label for="idNumPlanWeeks">Enter number of weeks</label>
+				<input id="idNumPlanWeeks" type="text" size="4" maxlength="4" value="1"/>
+			</div>
+			<div class="clear-fix">
+				<label for="idMaxChoreAlertsPerWk">Enter maximum number of chore alerts per week</label>
+				<input id="idMaxChoreAlertsPerWk" type="text" size="4" maxlength="4" value="50"/>
+			</div>
+		</div>
+		<div class="product-box">
+			<div class="clear-fix">
+				<label for="idReportLevel">Enter report level</label>
+				<input id="idReportLevel" type="text" size="1" maxlength="1" value="1"/>
+			</div>
+			<div class="clear-fix">
+				<label for="idRewardLevel">Enter reward level</label>
+				<input id="idRewardLevel" type="text" size="1" maxlength="1" value="1"/>
+			</div>
+			<div class="clear-fix">
+				<label for="idNewPlanId">Enter new plan id</label>
+				<input id="idNewPlanId" type="text" size="4" maxlength="4" value="1"/>
+			</div>
+		</div>
+		<div class="product-box">
+			<div class="create-plan">Create</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#idMaxChildren").focus();
+			var pageObj = new maple.productPlanPage();
+			$(".create-plan").click(function(e){
+				var strMaxChildren = $("#idMaxChildren").val();
+				var strMaxChoreAlertsPerWk = $("#idMaxChoreAlertsPerWk").val();
+				var strNumPlanWeeks = $("#idNumPlanWeeks").val();
+				var strReportLevel = $("#idReportLevel").val();
+				var strRewardLevel = $("#idRewardLevel").val();
+				var strNewPlanId = $("#idNewPlanId").val();
+				pageObj.createPlan(strMaxChildren, strMaxChoreAlertsPerWk, strReportLevel, strRewardLevel, strNumPlanWeeks, strNewPlanId);
+			});
+		});
+	</script>
+</body>
+</html>

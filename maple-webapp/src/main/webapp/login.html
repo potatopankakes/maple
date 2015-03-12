@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Maple Login Page</title>
+	<meta name="description" content="Maple Login Page"/>
+	<meta name="keywords" content="maple, login, logout"/>
+	<link rel="stylesheet" type="text/css" href="css/maple.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/crypto-js-v2.0.0/crypto-sha256/crypto-sha256.js"></script>
+	<script type="text/javascript" src="js/maple.util.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+	<h1>Maple Login Page</h1>
+	<div class="fields clear-fix">
+		<div class="username-box">
+			<label for="idUsername">Enter your username</label>
+			<input id="idUsername" type="text" size="50" maxlength="50" value="potatopankakes@gmail.com"/>
+		</div>
+		<div class="password-box">
+			<label for="idPassword">Enter your password</label>
+			<input id="idPassword" type="password" size="50" maxlength="50" value="mypassword"/>
+		</div>
+		<div class="login">Login</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#idUsername").focus();
+			$(".login").click(function(){
+				var pageObj = new maple.loginPage();
+				var strUsername = $("#idUsername").val();
+				var strPassword = $("#idPassword").val();
+				pageObj.login(strUsername, strPassword);
+			});
+		});
+	</script>
+</body>
+</html>

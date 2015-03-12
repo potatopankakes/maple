@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="Product Plan" verbose="1" >
+	<parameter name="baseUrl" value="http://localhost:8080/maple"/>
+	<listeners>
+		<listener class-name="com.gnoras.maple.itest.impl.MapleWebTestNGListener"/>
+	</listeners>
+	<test name="productPlanCreate" preserve-order="true">
+		<parameter name="productPlanId" value="2"/>
+		<parameter name="maxChildren" value="-1"/>
+		<parameter name="maxChoreAlertsPerWk" value="-1"/>
+		<parameter name="reportLevel" value="-1"/>
+		<parameter name="rewardLevel" value="-1"/>
+		<parameter name="planWeeks" value="-1"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.ProductPlanServiceTest">
+				<methods>
+					<include name="testCreate" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

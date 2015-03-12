@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="all" verbose="1" >
+<!--
+	<parameter name="baseUrl" value="http://localhost:8080/maple"/>
+-->
+	<suite-files>
+		<suite-file path="suites/login-integration-tests.xml"/>
+<!--
+		<suite-file path="suites/language-integration-tests.xml"/>
+		<suite-file path="suites/productPlan-integration-tests.xml"/>
+-->
+	</suite-files>
+</suite>

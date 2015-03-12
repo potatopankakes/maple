@@ -1,0 +1,53 @@
+body {
+	font-size:10px;
+	font-style:normal;
+	line-height:normal;
+	font-family:Helvetica;
+	margin:10px;
+	padding:10px;
+	background-color:#C0C0C0;
+}
+
+form {
+	margin:0;
+}
+
+input{
+	font-family:Helvetica;
+	font-size:9px;
+	line-height:10px;
+	border: 1px solid #909090;
+}
+
+input:focus{
+	border:1px solid #FFC644;
+	background-color:#FFAF3D;
+}
+
+input[error]{
+	border: 1px solid #EF0000;
+	border: 1px solid #FFAFBA;
+}
+
+.fields{
+	background-color:#909090;
+	padding:10px;
+}
+
+.clear-fix{
+	zoom:1;
+}
+
+.clear-fix:after {
+    clear:both;
+    content:" ";
+    display:block;
+    height:0;
+    visibility:hidden;
+}
+
+.clip-overflow {
+    overflow:hidden;
+    white-space:nowrap;
+}
+

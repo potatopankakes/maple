@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one
+	or more contributor license agreements. See the NOTICE file
+	distributed with this work for additional information
+	regarding copyright ownership. The ASF licenses this file
+	to you under the Apache License, Version 2.0 (the
+	"License"); you may not use this file except in compliance
+	with the License. You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing,
+	software distributed under the License is distributed on an
+	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	KIND, either express or implied. See the License for the
+	specific language governing permissions and limitations
+	under the License.
+-->
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+		http://www.springframework.org/schema/jms
+		http://www.springframework.org/schema/jms/spring-jms-2.5.xsd
+		http://www.springframework.org/schema/lang
+		http://www.springframework.org/schema/lang/spring-lang-2.5.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-2.5.xsd
+		"
+	>
+	
+	<bean id="jdbcConnectionProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="${placeHolderJdbcConnectionProp}"/>
+	</bean>
+
+	<bean id="jdbcConfiguration" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>${placeHolderJdbcProp}</value>
+		</property>
+	</bean>
+
+	<bean 
+		id="dataSource" 
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}" />
+		<property name="connectionProperties" ref="jdbcConnectionProperties" />
+	</bean>
+
+	<bean 
+		id="sessionFactory" 
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+ 				<value>com.gnoras.maple.dal.model.Account</value>
+ 				<value>com.gnoras.maple.dal.model.AccountProductPlan</value>
+ 				<value>com.gnoras.maple.dal.model.AccountProductPlanAdjustment</value>
+ 				<value>com.gnoras.maple.dal.model.AccountState</value>
+ 				<value>com.gnoras.maple.dal.model.Child</value>
+ 				<value>com.gnoras.maple.dal.model.Chore</value>
+ 				<value>com.gnoras.maple.dal.model.ChoreAssignment</value>
+ 				<value>com.gnoras.maple.dal.model.Country</value>
+ 				<value>com.gnoras.maple.dal.model.CountryCurrency</value>
+ 				<value>com.gnoras.maple.dal.model.CountryName</value>
+ 				<value>com.gnoras.maple.dal.model.Currency</value>
+ 				<value>com.gnoras.maple.dal.model.CurrencyName</value>
+ 				<value>com.gnoras.maple.dal.model.EmailAddress</value>
+ 				<value>com.gnoras.maple.dal.model.EmailVerification</value>
+ 				<value>com.gnoras.maple.dal.model.Group</value>
+ 				<value>com.gnoras.maple.dal.model.GroupMember</value>
+ 				<value>com.gnoras.maple.dal.model.Family</value>
+ 				<value>com.gnoras.maple.dal.model.FamilyChild</value>
+ 				<value>com.gnoras.maple.dal.model.FamilyParent</value>
+ 				<value>com.gnoras.maple.dal.model.Language</value>
+ 				<value>com.gnoras.maple.dal.model.LanguageName</value>
+ 				<value>com.gnoras.maple.dal.model.Offering</value>
+ 				<value>com.gnoras.maple.dal.model.Parent</value>
+ 				<value>com.gnoras.maple.dal.model.PaymentFromCc</value>
+ 				<value>com.gnoras.maple.dal.model.PaymentFromPaypal</value>
+ 				<value>com.gnoras.maple.dal.model.PaymentType</value>
+ 				<value>com.gnoras.maple.dal.model.PlanText</value>
+ 				<value>com.gnoras.maple.dal.model.ProductPlan</value>
+ 				<value>com.gnoras.maple.dal.model.Privilege</value>
+ 				<value>com.gnoras.maple.dal.model.PrivilegedGroup</value>
+ 				<value>com.gnoras.maple.dal.model.Purchase</value>
+ 				<value>com.gnoras.maple.dal.model.Quota</value>
+ 				<value>com.gnoras.maple.dal.model.RecurringChoreAssignment</value>
+ 				<value>com.gnoras.maple.dal.model.Refund</value>
+ 				<value>com.gnoras.maple.dal.model.Reward</value>
+ 				<value>com.gnoras.maple.dal.model.RewardEarlyFunction</value>
+ 				<value>com.gnoras.maple.dal.model.RewardLateFunction</value>
+ 				<value>com.gnoras.maple.dal.model.RewardPolicy</value>
+ 				<value>com.gnoras.maple.dal.model.RewardType</value>
+ 				<value>com.gnoras.maple.dal.model.Transaction</value>
+ 				<value>com.gnoras.maple.dal.model.TransactionItem</value>
+ 				<value>com.gnoras.maple.dal.model.TransactionItemPK</value>
+ 				<value>com.gnoras.maple.dal.model.User</value>
+			</list>
+		</property>
+	</bean>
+
+ 	<bean 
+		id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		autowire="autodetect">
+		
+		<property name="AutodetectDataSource" value="true"/>
+
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+
+	</bean>
+	
+	<context:component-scan base-package="com.gnoras.maple.dal.services"/>
+	<context:component-scan base-package="com.gnoras.maple.dal.factories"/>
+	<context:component-scan base-package="com.gnoras.maple.dal.model"/>
+	<context:component-scan base-package="com.gnoras.maple.dal.model.dao.impl"/>
+	<context:component-scan base-package="com.felees.hbnpojogen.persistence.impl.HibernateUtils"/>
+
+	<!-- Switch on transactions -->
+	<tx:annotation-driven />
+	
+</beans>

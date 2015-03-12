@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="login" verbose="1" >
+	<parameter name="baseUrl" value="http://localhost:8080/maple"/>
+	<parameter name="requireInternalResponse" value="true"/>
+	<listeners>
+		<listener class-name="com.gnoras.maple.itest.impl.MapleWebTestNGListener"/>
+	</listeners>
+	<test name="getSalt for Existing Not-Deleted and Verified User" preserve-order="true">
+		<parameter name="email" value="exists-not-deleted-verified@gmail.com"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LoginServiceTest" >
+				<methods>
+					<include name="testGetSalt" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="getSalt for Existing Not-Deleted and Not-Verified User" preserve-order="true">
+		<parameter name="email" value="exists-not-deleted-not-verified@gmail.com"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LoginServiceTest" >
+				<methods>
+					<include name="testGetSaltFailure" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="getSalt for Existing Deleted and Not-Verified User" preserve-order="true">
+		<parameter name="email" value="exists-deleted-not-verified@gmail.com"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LoginServiceTest" >
+				<methods>
+					<include name="testGetSaltFailure" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="getSalt for Existing Deleted and Verified User" preserve-order="true">
+		<parameter name="email" value="exists-deleted-verified@gmail.com"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LoginServiceTest" >
+				<methods>
+					<include name="testGetSaltFailure" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="getSalt for Not Existing User" preserve-order="true">
+		<parameter name="email" value="not-exists@gmail.com"/>
+		<classes>
+			<class name="com.gnoras.maple.itest.web.services.tests.LoginServiceTest" >
+				<methods>
+					<include name="testGetSaltFailure" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+</suite>

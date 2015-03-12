@@ -1,0 +1,38 @@
+.header {
+	position: relative;
+	background-color: #C9DF8B;
+	border-width: 0em;
+	border-style: solid;
+	border-color: #929292;
+	height: 3em;
+}
+
+.main-menu {
+	position: absolute;
+	bottom: 0em;
+}
+
+.content {
+	background-color: #C7DAE2;
+	width: 100%;
+	border-width: 0em;
+	border-color: #929292;
+	padding: 0.31em 0.31em 0.31em 0.31em;
+}
+
+.footer {
+	background-color: #E5EECC;
+	color: #929292;
+	border-width: 0em;
+	padding: 0.8em;
+	margin: 0em;
+	width: 100%;
+	position: absolute;
+	bottom: 0em;
+}
+
+.terms-of-use a,
+.terms-of-use a:visited {
+	color: #929292;
+}
+

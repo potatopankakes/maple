@@ -1,0 +1,39 @@
+.username-box,.password-box{
+	float:left;
+	width:240px;
+	padding:0 20px 0 10px;
+}
+.options-box{
+	padding-top: 15px;
+	clear:left;
+	float:left;
+}
+.options-box div {
+	float:left;
+}
+.options-box div:nth-child(1) {
+	width:240px;
+}
+.options-box div:nth-child(2) {
+	width:110px;
+}
+.options-box div:nth-child(3) {
+	width:100px;
+}
+.compute-hmac, .login{
+	padding-top: 15px;
+	float:left;
+	cursor:pointer;
+	text-decoration:underline;
+	color:blue;
+}
+.compute-hmac{
+	padding-left: 50px;
+}
+.login-results-box{
+	padding-top: 15px;
+	float:left;
+}
+.login-results-box label{
+	display: block;
+}
